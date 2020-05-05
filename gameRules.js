@@ -1,10 +1,10 @@
 export default function createGame() {
     const state = {
         players: {},
-        fruits: {},
+        bombs: {},
         screen: {
-            width: 10,
-            height: 10
+            width: 41,
+            height: 41
         }
     }
 
@@ -13,7 +13,7 @@ export default function createGame() {
     function start() {
         const frequency = 2000
 
-        setInterval(addFruit, frequency)
+        setInterval(update, frequency)
     }
 
     function subscribe(observerFunction) {
@@ -59,32 +59,37 @@ export default function createGame() {
         })
     }
 
-    function addFruit(command) {
-        const fruitId = command ? command.fruitId : Math.floor(Math.random() * 10000000)
-        const fruitX = command ? command.fruitX : Math.floor(Math.random() * state.screen.width)
-        const fruitY = command ? command.fruitY : Math.floor(Math.random() * state.screen.height)
+    function addBomb(command) {
+        const bombId = command ? command.bombId : Math.floor(Math.random() * 10000000)
+        const bombRange = command.bombRange
+        const bombX = command.bombX
+        const bombY = commmand.bombY
 
-        state.fruits[fruitId] = {
-            x: fruitX,
-            y: fruitY
+        state.bombs[bombId] = {
+            x: bombX,
+            y: bombY,
+            range: bombRange,
+            timer: 3,
+            active: false
         }
 
         notifyAll({
-            type: 'add-fruit',
-            fruitId: fruitId,
-            fruitX: fruitX,
-            fruitY: fruitY
+            type: 'add-bomb',
+            bombId: bombId,
+            bombRange: bombRange,
+            bombX: bombX,
+            bombY: bombY
         })
     }
 
-    function removeFruit(command) {
-        const fruitId = command.fruitId
+    function removeBomb(command) {
+        const bombId = command.bombId
 
-        delete state.fruits[fruitId]
+        delete state.bombs[bombId]
 
         notifyAll({
-            type: 'remove-fruit',
-            fruitId: fruitId,
+            type: 'remove-bomb',
+            bombId: bombId,
         })
     }
 
@@ -121,21 +126,34 @@ export default function createGame() {
 
         if (player && moveFunction) {
             moveFunction(player)
-            checkForFruitCollision(playerId)
         }
 
     }
 
-    function checkForFruitCollision(playerId) {
+    function checkBomb(playerId) {
         const player = state.players[playerId]
 
-        for (const fruitId in state.fruits) {
-            const fruit = state.fruits[fruitId]
-            console.log(`Checking ${playerId} and ${fruitId}`)
+        for (const bombId in state.bombs) {
+            const bomb = state.bombs[bombId]
+            console.log(`Checking ${playerId} and ${bombId}`)
 
-            if (player.x === fruit.x && player.y === fruit.y) {
-                console.log(`COLLISION between ${playerId} and ${fruitId}`)
-                removeFruit({ fruitId: fruitId })
+            if (Math.abs(player.x - bomb.x) <= bomb.bombRange && Math.abs(player.y - bomb.y) <= bomb.bombRange) {
+                console.log(`Bomb number: ${bombId} exploded near ${playerId} `)
+                removeBomb({ bombId: bombId })
+            }
+        }
+    }
+
+    function update () {
+        for (const bombId in state.bombs) {
+            const bomb = state.bombs[bombId]
+
+            if (bomb.active && bomb.timer > 0) {
+                bomb.timer = bomb.timer - 1
+
+                if (bomb.timer === 0){
+                    removeBomb(bombId)
+                }
             }
         }
     }
@@ -144,8 +162,8 @@ export default function createGame() {
         addPlayer,
         removePlayer,
         movePlayer,
-        addFruit,
-        removeFruit,
+        addBomb,
+        removeBomb,
         state,
         setState,
         subscribe,

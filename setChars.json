@@ -1,0 +1,199 @@
+{
+    "allies": {
+        "fotis": {
+            "name": "Fotis",
+            "speciality": "electricity",
+            "speed": 3,
+            "intelligence": 7,
+            "strength": 4,
+            "standard equipment": "Multimeter",
+            "auxiliary equipment": "Tool Box",
+            "color": "blue",
+            "inGame": {
+                "armor": {
+                    "initial": 0,
+                    "current": 0,
+                    "max": 98
+                },
+                "life" : {
+                    "initial": 100,
+                    "current": 100,
+                    "max": 500
+                },
+                "reconstitution" : {
+                    "current": 0,
+                    "afterDamage": 0,
+                    "idle": 0
+                }
+            },
+            "backpack": {
+                "items": {},
+                "numberOfItems": 0,
+                "maxWeigth": 10
+            }
+        },
+        "synar": {
+            "name": "Synar",
+            "speciality": "mechanics",
+            "speed": 2,
+            "intelligence": 6,
+            "strength": 9,
+            "standard equipment": "Tool Box",
+            "auxiliary equipment": "PeaceMaker",
+            "color": "red",
+            "inGame": {
+                "armor": {
+                    "initial": 0,
+                    "current": 0,
+                    "max": 98
+                },
+                "life" : {
+                    "initial": 100,
+                    "current": 100,
+                    "max": 500
+                },
+                "reconstitution" : {
+                    "current": 0,
+                    "afterDamage": 0,
+                    "idle": 0
+                }
+            },
+            "backpack": {
+                "items": {},
+                "numberOfItems": 0,
+                "maxWeigth": 10
+            }
+        },
+        "anyth": {
+            "name": "Anyth",
+            "speciality": "chemistry",
+            "speed": 3,
+            "intelligence": 8,
+            "strength": 3,
+            "standard equipment": "Medical Coat",
+            "auxiliary equipment": "Multimeter",
+            "color": "white",
+            "inGame": {
+                "armor": {
+                    "initial": 0,
+                    "current": 0,
+                    "max": 98
+                },
+                "life" : {
+                    "initial": 80,
+                    "current": 80,
+                    "max": 500
+                },
+                "reconstitution" : {
+                    "current": 0,
+                    "afterDamage": 0,
+                    "idle": 0
+                }
+            },
+            "backpack": {
+                "items": {},
+                "numberOfItems": 0,
+                "maxWeigth": 10
+            }
+        },
+        "dromes": {
+            "name": "Dromes",
+            "speciality": "weapons",
+            "speed": 4,
+            "intelligence": 4,
+            "strength": 5,
+            "standard equipment": "PeaceMaker",
+            "auxiliary equipment": "Medical Coat",
+            "color": "yellow",
+            "inGame": {
+                "armor": {
+                    "initial": 0,
+                    "current": 0,
+                    "max": 98
+                },
+                "life" : {
+                    "initial": 100,
+                    "current": 100,
+                    "max": 500
+                },
+                "reconstitution" : {
+                    "current": 0,
+                    "afterDamage": 0,
+                    "idle": 0
+                }
+            },
+            "backpack": {
+                "items": {},
+                "numberOfItems": 0,
+                "maxWeigth": 10
+            }
+        }
+    },
+    "enemies": {
+        "luxios": {
+            "name": "Luxios",
+            "speciality": "inventions",
+            "speed": 4,
+            "intelligence": 7,
+            "strength": 4,
+            "standard equipment": "Laptop",
+            "auxiliary equipment": "Bomb",
+            "color": "black",
+            "inGame": {
+                "armor": {
+                    "initial": 5,
+                    "current": 5,
+                    "max": 98
+                },
+                "life" : {
+                    "initial": 150,
+                    "current": 150,
+                    "max": 500
+                },
+                "reconstitution" : {
+                    "current": 0,
+                    "afterDamage": 0,
+                    "idle": 0
+                }
+            },
+            "backpack": {
+                "items": {},
+                "numberOfItems": 0,
+                "MaxWeigth": 10
+            }
+        },
+        "negans": {
+            "name": "Negans",
+            "speciality": "wrecking",
+            "speed": 3,
+            "intelligence": 7,
+            "strength": 4,
+            "standard equipment": "PeaceMaker",
+            "auxiliary equipment": "Bomb",
+            "color": "green",
+            "inGame": {
+                "armor": {
+                    "initial": 3,
+                    "current": 3,
+                    "max": 98
+                },
+                "life" : {
+                    "initial": 150,
+                    "current": 150,
+                    "max": 500
+                },
+                "reconstitution" : {
+                    "current": 0,
+                    "afterDamage": 0,
+                    "idle": 0
+                }
+            },
+            "backpack": {
+                "items": {},
+                "numberOfItems": 0,
+                "MaxWeigth": 10
+            }
+        }
+    }
+
+}
