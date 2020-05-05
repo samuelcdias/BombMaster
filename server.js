@@ -1,6 +1,6 @@
 import express from 'express'
 import http from 'http'
-import createGame from './public/game.js'
+import createGame from './gameRules.js'
 import socketio from 'socket.io'
 
 const app = express()
