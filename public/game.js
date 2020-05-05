@@ -84,7 +84,7 @@ export default function createGame() {
 
     function removeBomb(command) {
         const bombId = command.bombId
-
+        checkBomb
         delete state.bombs[bombId]
 
         notifyAll({
@@ -103,12 +103,12 @@ export default function createGame() {
                 }
             },
             ArrowRight(player) {
-                if (player.x + 1 < state.screen.width) {
+                if (player.x + 1 < state.screen.width - 2) {
                     player.x = player.x + 1
                 }
             },
             ArrowDown(player) {
-                if (player.y + 1 < state.screen.height) {
+                if (player.y + 1 < state.screen.height - 2) {
                     player.y = player.y + 1
                 }
             },
@@ -131,15 +131,15 @@ export default function createGame() {
     }
 
     function checkBomb(playerId) {
-        const player = state.players[playerId]
+        for (const playerId in state.players) {
+            for (const bombId in state.bombs) {
+                const bomb = state.bombs[bombId]
+                console.log(`Checking ${bombId}`)
 
-        for (const bombId in state.bombs) {
-            const bomb = state.bombs[bombId]
-            console.log(`Checking ${playerId} and ${bombId}`)
-
-            if (Math.abs(player.x - bomb.x) <= bomb.bombRange && Math.abs(player.y - bomb.y) <= bomb.bombRange) {
-                console.log(`Bomb number: ${bombId} exploded near ${playerId} `)
-                removeBomb({ bombId: bombId })
+                if (Math.abs(player.x - bomb.x) <= bomb.bombRange && Math.abs(player.y - bomb.y) <= bomb.bombRange) {
+                    console.log(`Bomb number: ${bombId} exploded near ${playerId} `)
+                    removeBomb({ bombId: bombId })
+                }
             }
         }
     }

@@ -1,6 +1,6 @@
 import express from 'express'
 import http from 'http'
-import createGame from './gameRules.js'
+import createGame from './public/game.js'
 import socketio from 'socket.io'
 
 const app = express()
@@ -20,7 +20,7 @@ game.subscribe((command) => {
 sockets.on('connection', (socket) => {
     const playerId = socket.id
     console.log(`> Player connected: ${playerId}`)
-
+    
     game.addPlayer({ playerId: playerId })
 
     socket.emit('setup', game.state)
